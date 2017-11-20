@@ -1,25 +1,35 @@
 function formatVanityPlate(string) {
   let words = string.split(' ')
-  console.log(words)
   words = words.map(word => word.toUpperCase())
-  words = words.replace(/'for'/gi, '4')
-  words = words.replace(/'to'/gi, '2')
   return words.join('')
 }
-//
-// function replaceFor {
-//   str.replace("for","4")
-// }
+
+function replacePlateBling(string) {
+  return string.replace('for', '4').replace('too', 'to').replace('to', '2').replace('you', 'u').replace('money', '$').replace('see', 'c')
+}
+
+function maximumPlate(string) {
+  if (string.length > 12) {
+    return string.substring(0, 12)
+  }
+    return string
+}
+
+function completePlateFormat(string) {
+  return formatVanityPlate(maximumPlate(replacePlateBling(string)))
+}
 
 const one = 'I like money'
-console.log(`Number plate: ${ formatVanityPlate(one) }`)
+console.log(`Number plate: ${ completePlateFormat(one) }`)
 
 const two = 'Cats for life'
-console.log(`Number plate: ${ formatVanityPlate(two) }`)
+console.log(`Number plate: ${ completePlateFormat(two) }`)
 
 const three = 'I am late'
-console.log(`Number plate: ${ formatVanityPlate(three) }`)
+console.log(`Number plate: ${ completePlateFormat(three) }`)
 
+const four = 'you cant see me'
+console.log(`Number plate: ${ completePlateFormat(four) }`)
 
 /*
 
